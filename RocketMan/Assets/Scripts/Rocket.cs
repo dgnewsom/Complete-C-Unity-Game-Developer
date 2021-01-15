@@ -7,11 +7,14 @@ public class Rocket : MonoBehaviour
 {
     Rigidbody rigidbody;
     [SerializeField]
-    float force = 10f;
+    float force = 25f;
+    AudioSource rocketEngine;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = this.GetComponent<Rigidbody>();
+        rocketEngine = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,7 +27,12 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            SetEngineBoostSound(true);
             Boost();
+        }
+        else
+        {
+            SetEngineBoostSound(false);
         }
         if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
@@ -49,5 +57,19 @@ public class Rocket : MonoBehaviour
     private void Boost()
     {
         rigidbody.AddRelativeForce(0, force, 0);
+    }
+
+    private void SetEngineBoostSound(bool isBoosting)
+    {
+        if (isBoosting)
+        {
+            rocketEngine.volume = 1f;
+            rocketEngine.pitch = 1f;
+        }
+        else
+        {
+            rocketEngine.volume = 0.2f;
+            rocketEngine.pitch = 0.6f;
+        }
     }
 }
