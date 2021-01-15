@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rocket : MonoBehaviour
 {
@@ -9,10 +10,17 @@ public class Rocket : MonoBehaviour
     float thrustForce = 25f;
     [SerializeField]
     float rotationSpeed = 100f;
+    [SerializeField]
+    int fuelAmount = 999;
+    [SerializeField]
+    int fuelCost = 1;
+
+    int fuelRemaining;
     Rigidbody rigidBody;
     AudioSource engineSound;
     ParticleSystem engineParticleSystem;
     ParticleSystem deathParticleSystem;
+    Text fuelText;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +29,9 @@ public class Rocket : MonoBehaviour
         engineSound = GetComponent<AudioSource>();
         engineParticleSystem = GameObject.Find("EngineParticleSystem").GetComponent<ParticleSystem>();
         deathParticleSystem = GameObject.Find("DeathParticleSystem").GetComponent<ParticleSystem>();
+        fuelRemaining = fuelAmount;
+        fuelText = GameObject.Find("Fuel Text").GetComponent<Text>();
+        SetFuelDisplay();
     }
 
     // Update is called once per frame
@@ -37,15 +48,25 @@ public class Rocket : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            SetEngineSound(true);
-            SetEngineParticleSystem(true);
-            rigidBody.AddRelativeForce(Vector3.up * thrustForce);
+            if(fuelRemaining - fuelCost >= 0)
+            {
+                SetEngineSound(true);
+                SetEngineParticleSystem(true);
+                rigidBody.AddRelativeForce(Vector3.up * thrustForce);
+                fuelRemaining = fuelRemaining - fuelCost;
+                SetFuelDisplay();
+            }
         }
         else
         {
             SetEngineSound(false);
             SetEngineParticleSystem(false);
         }
+    }
+
+    private void SetFuelDisplay()
+    {
+        fuelText.text = fuelRemaining.ToString();
     }
 
     /*
@@ -114,6 +135,11 @@ public class Rocket : MonoBehaviour
 
     private void KillPlayer()
     {
+        this.GetComponent<MeshRenderer>().enabled = false;
         deathParticleSystem.Play();
+        SetEngineParticleSystem(false);
+        SetEngineSound(false);
+        GameObject.Destroy(GameObject.Find("Rocket"),0.5f);
+
     }
 }
