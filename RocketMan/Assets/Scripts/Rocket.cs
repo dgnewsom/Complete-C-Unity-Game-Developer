@@ -12,13 +12,15 @@ public class Rocket : MonoBehaviour
     Rigidbody rigidBody;
     AudioSource engineSound;
     ParticleSystem engineParticleSystem;
+    ParticleSystem deathParticleSystem;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = this.GetComponent<Rigidbody>();
         engineSound = GetComponent<AudioSource>();
-        engineParticleSystem = GetComponentInChildren<ParticleSystem>();
+        engineParticleSystem = GameObject.Find("EngineParticleSystem").GetComponent<ParticleSystem>();
+        deathParticleSystem = GameObject.Find("DeathParticleSystem").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -95,5 +97,23 @@ public class Rocket : MonoBehaviour
         {
             engineParticleSystem.Stop();
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Safe":
+                print("Safe collision");
+                break;
+            default:
+                KillPlayer();
+                break;
+        }
+    }
+
+    private void KillPlayer()
+    {
+        deathParticleSystem.Play();
     }
 }
