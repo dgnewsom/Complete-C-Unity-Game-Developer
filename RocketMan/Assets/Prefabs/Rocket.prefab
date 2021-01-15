@@ -4868,8 +4868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5eafa15f5d088468b633a0e9e85c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 50
-  rotationSpeed: 150
+  thrustForce: 30
+  rotationSpeed: 100
 --- !u!65 &2842215450683005660
 BoxCollider:
   m_ObjectHideFlags: 0
