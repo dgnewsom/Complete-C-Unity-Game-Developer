@@ -8,7 +8,7 @@ public class FuelPickup : MonoBehaviour
 
     public int CollectFuel()
     {
-        GameObject.Destroy(this.gameObject,0.00001f);
+        GameObject.Destroy(this.gameObject);
         return fuelAmount;
     }
 }

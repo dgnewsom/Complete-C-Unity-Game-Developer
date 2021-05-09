@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class RocketMovement : MonoBehaviour
+public class Rocket : MonoBehaviour
 {
     [SerializeField] float thrustForce = 25f;
     [SerializeField] float rotationSpeed = 100f;
@@ -15,26 +16,69 @@ public class RocketMovement : MonoBehaviour
     Rigidbody rigidBody;
     AudioSource engineSound;
     ParticleSystem engineParticleSystem;
+    ParticleSystem deathParticleSystem;
     UIScript uiScript;
     bool isDead = false;
+    bool finished = false;
 
     public bool IsDead { get => isDead; set => isDead = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        isDead = false;
         rigidBody = this.GetComponent<Rigidbody>();
         engineSound = GetComponent<AudioSource>();
         engineParticleSystem = GameObject.Find("EngineParticleSystem").GetComponent<ParticleSystem>();
+        deathParticleSystem = GameObject.Find("DeathParticleSystem").GetComponent<ParticleSystem>();
         fuelRemaining = maxFuelAmount;
         uiScript = FindObjectOfType<UIScript>();
         UpdateFuelDisplay();
     }
 
-    internal void KillPlayer()
+    private void OnTriggerEnter(Collider other)
     {
+        switch (other.gameObject.tag)
+        {
+            case "Fuel":
+                int fuelToAdd = other.gameObject.GetComponent<FuelPickup>().CollectFuel();
+                AddFuel(fuelToAdd);
+                break;
+            default:
+                break;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Safe":
+                print("Safe collision");
+                break;
+            case "Finish":
+                CompleteLevel();
+                break;
+            default:
+                CrashSequence();
+                break;
+        }
+    }
+
+    private void CompleteLevel()
+    {
+        finished = true;
+        Invoke(nameof(LoadNextLevel), 2f);
+    }
+
+    internal void CrashSequence()
+    {
+        isDead = true;
+        this.GetComponent<MeshRenderer>().enabled = false;
         SetEngineParticleSystem(false);
         SetEngineSound(false);
+        deathParticleSystem.Play();
+        GetComponent<Rigidbody>().isKinematic = true;
+        GameObject.Destroy(engineParticleSystem.gameObject);
+        Invoke(nameof(RestartLevel), 1f);
     }
 
     private void UpdateFuelDisplay()
@@ -45,7 +89,7 @@ public class RocketMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDead)
+        if (!isDead && !finished)
         {
             Thrust();
             Rotate();
@@ -64,7 +108,7 @@ public class RocketMovement : MonoBehaviour
                 SetEngineSound(true);
                 SetEngineParticleSystem(true);
                 rigidBody.AddRelativeForce(Vector3.up * thrustForce);
-                fuelRemaining = fuelRemaining - fuelCost;
+                fuelRemaining -= fuelCost;
                 UpdateFuelDisplay();
             }
         }
@@ -141,5 +185,26 @@ public class RocketMovement : MonoBehaviour
             fuelRemaining = maxFuelAmount;
         }
         UpdateFuelDisplay();
+    }
+
+    public void RestartLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if(nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            print("Finished");
+        }
+        
     }
 }
