@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     Transform rocket;
     // Start is called before the first frame update
@@ -14,6 +14,9 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(rocket.position.x, rocket.position.y +3, -10f);
+        if(rocket != null)
+        {
+            this.transform.position = new Vector3(rocket.position.x, rocket.position.y +3, -10f);
+        }
     }
 }

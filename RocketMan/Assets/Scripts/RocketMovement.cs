@@ -4,23 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Rocket : MonoBehaviour
+public class RocketMovement : MonoBehaviour
 {
-    [SerializeField]
-    float thrustForce = 25f;
-    [SerializeField]
-    float rotationSpeed = 100f;
-    [SerializeField]
-    int fuelAmount = 999;
-    [SerializeField]
-    int fuelCost = 1;
+    [SerializeField] float thrustForce = 25f;
+    [SerializeField] float rotationSpeed = 100f;
+    [SerializeField] int maxFuelAmount = 999;
+    [SerializeField] int fuelCost = 1;
 
     int fuelRemaining;
     Rigidbody rigidBody;
     AudioSource engineSound;
     ParticleSystem engineParticleSystem;
-    ParticleSystem deathParticleSystem;
-    Text fuelText;
+    UIScript uiScript;
+    bool isDead = false;
+
+    public bool IsDead { get => isDead; set => isDead = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -28,17 +26,30 @@ public class Rocket : MonoBehaviour
         rigidBody = this.GetComponent<Rigidbody>();
         engineSound = GetComponent<AudioSource>();
         engineParticleSystem = GameObject.Find("EngineParticleSystem").GetComponent<ParticleSystem>();
-        deathParticleSystem = GameObject.Find("DeathParticleSystem").GetComponent<ParticleSystem>();
-        fuelRemaining = fuelAmount;
-        fuelText = GameObject.Find("Fuel Text").GetComponent<Text>();
-        SetFuelDisplay();
+        fuelRemaining = maxFuelAmount;
+        uiScript = FindObjectOfType<UIScript>();
+        UpdateFuelDisplay();
+    }
+
+    internal void KillPlayer()
+    {
+        SetEngineParticleSystem(false);
+        SetEngineSound(false);
+    }
+
+    private void UpdateFuelDisplay()
+    {
+        uiScript.SetFuelDisplay(fuelRemaining, maxFuelAmount);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        if (!isDead)
+        {
+            Thrust();
+            Rotate();
+        }
     }
 
     /*
@@ -54,7 +65,7 @@ public class Rocket : MonoBehaviour
                 SetEngineParticleSystem(true);
                 rigidBody.AddRelativeForce(Vector3.up * thrustForce);
                 fuelRemaining = fuelRemaining - fuelCost;
-                SetFuelDisplay();
+                UpdateFuelDisplay();
             }
         }
         else
@@ -64,10 +75,7 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void SetFuelDisplay()
-    {
-        fuelText.text = fuelRemaining.ToString();
-    }
+
 
     /*
      * Control rotation when left and right buttons pressed
@@ -120,26 +128,18 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void AddFuel(int fuelToAdd)
     {
-        switch (collision.gameObject.tag)
+
+        print(fuelToAdd + " Fuel Added");
+        if (fuelRemaining + fuelToAdd <= maxFuelAmount)
         {
-            case "Safe":
-                print("Safe collision");
-                break;
-            default:
-                KillPlayer();
-                break;
+            fuelRemaining += fuelToAdd;
         }
-    }
-
-    private void KillPlayer()
-    {
-        this.GetComponent<MeshRenderer>().enabled = false;
-        deathParticleSystem.Play();
-        SetEngineParticleSystem(false);
-        SetEngineSound(false);
-        GameObject.Destroy(GameObject.Find("Rocket"),0.5f);
-
+        else
+        {
+            fuelRemaining = maxFuelAmount;
+        }
+        UpdateFuelDisplay();
     }
 }
