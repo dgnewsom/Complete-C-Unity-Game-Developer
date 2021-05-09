@@ -9943,6 +9943,10 @@ MonoBehaviour:
   rotationSpeed: 100
   maxFuelAmount: 999
   fuelCost: 1
+  engineSound: {fileID: 8300000, guid: 5c94274987afc574083dca9e0e00686e, type: 3}
+  explosion: {fileID: 8300000, guid: 22d7864b8013bad4f9c58ec1a4aefe13, type: 3}
+  finish: {fileID: 8300000, guid: 6cae0e5129dfdc84a95f28eb19416927, type: 3}
+  pickupSound: {fileID: 8300000, guid: 2d39abe0d83023a4f8ecf9cfb91abb16, type: 3}
 --- !u!65 &2842215450683005660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9966,7 +9970,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5c94274987afc574083dca9e0e00686e, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 0.6

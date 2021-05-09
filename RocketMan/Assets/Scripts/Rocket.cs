@@ -11,10 +11,14 @@ public class Rocket : MonoBehaviour
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] int maxFuelAmount = 999;
     [SerializeField] int fuelCost = 1;
+    [SerializeField] AudioClip engineSound;
+    [SerializeField] AudioClip explosion;
+    [SerializeField] AudioClip finish;
+    [SerializeField] AudioClip pickupSound;
 
+    AudioSource audioSource;
     int fuelRemaining;
     Rigidbody rigidBody;
-    AudioSource engineSound;
     ParticleSystem engineParticleSystem;
     ParticleSystem deathParticleSystem;
     UIScript uiScript;
@@ -27,7 +31,7 @@ public class Rocket : MonoBehaviour
     {
         isDead = false;
         rigidBody = this.GetComponent<Rigidbody>();
-        engineSound = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         engineParticleSystem = GameObject.Find("EngineParticleSystem").GetComponent<ParticleSystem>();
         deathParticleSystem = GameObject.Find("DeathParticleSystem").GetComponent<ParticleSystem>();
         fuelRemaining = maxFuelAmount;
@@ -66,6 +70,7 @@ public class Rocket : MonoBehaviour
     private void CompleteLevel()
     {
         finished = true;
+        audioSource.PlayOneShot(finish);
         Invoke(nameof(LoadNextLevel), 2f);
     }
 
@@ -74,7 +79,7 @@ public class Rocket : MonoBehaviour
         isDead = true;
         this.GetComponent<MeshRenderer>().enabled = false;
         SetEngineParticleSystem(false);
-        SetEngineSound(false);
+        audioSource.PlayOneShot(explosion);
         deathParticleSystem.Play();
         GetComponent<Rigidbody>().isKinematic = true;
         GameObject.Destroy(engineParticleSystem.gameObject);
@@ -145,15 +150,21 @@ public class Rocket : MonoBehaviour
      */
     private void SetEngineSound(bool isBoosting)
     {
+        audioSource.clip = engineSound;
+        audioSource.loop = true;
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
         if (isBoosting)
         {
-            engineSound.volume = 1f;
-            engineSound.pitch = 1f;
+            audioSource.volume = 1f;
+            audioSource.pitch = 1f;
         }
         else
         {
-            engineSound.volume = 0.2f;
-            engineSound.pitch = 0.6f;
+            audioSource.volume = 0.2f;
+            audioSource.pitch = 0.6f;
         }
     }
 
@@ -174,7 +185,7 @@ public class Rocket : MonoBehaviour
 
     public void AddFuel(int fuelToAdd)
     {
-
+        audioSource.PlayOneShot(pickupSound);
         print(fuelToAdd + " Fuel Added");
         if (fuelRemaining + fuelToAdd <= maxFuelAmount)
         {
