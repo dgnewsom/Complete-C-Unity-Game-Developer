@@ -299,7 +299,7 @@ LightingSettings:
   m_AlbedoBoost: 1
   m_IndirectOutputScale: 1
   m_UsingShadowmask: 0
-  m_BakeBackend: 2
+  m_BakeBackend: 1
   m_LightmapMaxSize: 1024
   m_BakeResolution: 40
   m_Padding: 2
@@ -364,7 +364,7 @@ PrefabInstance:
     - target: {fileID: 2556018207364220185, guid: e902fc025a4635c48b860b95fe9bf476,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101.20428
+      value: 101.78
       objectReference: {fileID: 0}
     - target: {fileID: 2556018207364220185, guid: e902fc025a4635c48b860b95fe9bf476,
         type: 3}
@@ -410,16 +410,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4498567703208800343, guid: e902fc025a4635c48b860b95fe9bf476,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7233594053821962736, guid: e902fc025a4635c48b860b95fe9bf476,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.85549927
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e902fc025a4635c48b860b95fe9bf476, type: 3}

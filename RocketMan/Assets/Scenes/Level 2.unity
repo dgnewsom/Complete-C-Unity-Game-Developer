@@ -206,7 +206,7 @@ LightingSettings:
   m_AlbedoBoost: 1
   m_IndirectOutputScale: 1
   m_UsingShadowmask: 0
-  m_BakeBackend: 2
+  m_BakeBackend: 1
   m_LightmapMaxSize: 1024
   m_BakeResolution: 40
   m_Padding: 2
@@ -387,21 +387,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2067004343553333928, guid: 90c687f0cee28dd4184757b348238170,
-        type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2067004343553333935, guid: 90c687f0cee28dd4184757b348238170,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.855
-      objectReference: {fileID: 0}
-    - target: {fileID: 5090058741920707336, guid: 90c687f0cee28dd4184757b348238170,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6608283740183463494, guid: 90c687f0cee28dd4184757b348238170,
         type: 3}
       propertyPath: m_RootOrder

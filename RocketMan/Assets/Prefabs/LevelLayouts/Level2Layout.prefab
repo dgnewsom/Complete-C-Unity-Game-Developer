@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6800444998292892029}
   - component: {fileID: 6493750057691972928}
   - component: {fileID: 5717969766121205685}
+  - component: {fileID: 1350422734}
   m_Layer: 0
   m_Name: Obstacle (3)
   m_TagString: Untagged
@@ -95,6 +96,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1350422734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605005183145052597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccf520f685f61d429b625e53ffe609a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 5, z: 0}
+  movementFactor: 0
+  cycleLength: 5
 --- !u!1 &6608283739963376562
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +123,7 @@ GameObject:
   - component: {fileID: 6608283739963376575}
   - component: {fileID: 6608283739963376572}
   - component: {fileID: 6608283739963376573}
+  - component: {fileID: 1294874808}
   m_Layer: 0
   m_Name: Obstacle (2)
   m_TagString: Untagged
@@ -190,6 +207,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1294874808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608283739963376562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccf520f685f61d429b625e53ffe609a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: -6, z: 0}
+  movementFactor: 0
+  cycleLength: 5
 --- !u!1 &6608283740183463495
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +269,7 @@ GameObject:
   - component: {fileID: 6608283740324420289}
   - component: {fileID: 6608283740324420294}
   - component: {fileID: 6608283740324420295}
+  - component: {fileID: 1429919303}
   m_Layer: 0
   m_Name: Obstacle (1)
   m_TagString: Untagged
@@ -320,6 +353,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1429919303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608283740324420292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccf520f685f61d429b625e53ffe609a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 5, z: 0}
+  movementFactor: 0
+  cycleLength: 5
 --- !u!1 &6608283740411978049
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +847,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6608283740183463494}
     m_Modifications:
+    - target: {fileID: 1357029441, guid: 1fa998082183a354791882a706695203, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.3510647e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655973789, guid: 1fa998082183a354791882a706695203, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 2452147690768739028, guid: 1fa998082183a354791882a706695203,
         type: 3}
       propertyPath: m_RootOrder
@@ -882,12 +938,12 @@ PrefabInstance:
     - target: {fileID: 872684548171798859, guid: 959cdcde12eded44b96d0db8e3e62b54,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 872684548171798859, guid: 959cdcde12eded44b96d0db8e3e62b54,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 872684548171798859, guid: 959cdcde12eded44b96d0db8e3e62b54,
         type: 3}
