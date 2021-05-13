@@ -50,19 +50,19 @@ public class Rocket : MonoBehaviour
     {
         if (debugActive)
         {
-            if (Input.GetKeyDown(KeyCode.F1))
+            if (Input.GetKey(KeyCode.F1))
             {
                 fuelUsage = !fuelUsage;
                 fuelRemaining = maxFuelAmount;
                 UpdateFuelDisplay();
                 Debug.Log("Fuel usage = " + fuelUsage);
             }
-            if (Input.GetKeyDown(KeyCode.F2))
+            if (Input.GetKey(KeyCode.F2))
             {
                 collisions = !collisions;
                 Debug.Log("Collisions = " + collisions);
             }
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKey(KeyCode.L))
             {
                 LoadNextLevel();
             }
@@ -356,6 +356,7 @@ public class Rocket : MonoBehaviour
         else
         {
             print("Finished");
+            uiScript.ShowEndScreen();
         }
 
     }
@@ -382,5 +383,10 @@ public class Rocket : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }

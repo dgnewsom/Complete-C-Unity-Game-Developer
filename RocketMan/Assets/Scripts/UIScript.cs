@@ -12,7 +12,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] TMP_Text fuelText;
     [SerializeField] TMP_Text levelName;
     [SerializeField] TMP_Text timer;
-    [SerializeField] Button nextLevel;
+    [SerializeField] GameObject endScreen;
     private string timerString;
     TimeSpan timespan;
 
@@ -23,7 +23,17 @@ public class UIScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }
         UpdateTimer();
+    }
+
+    public static void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quitting Game!");
     }
 
     private void UpdateTimer()
@@ -40,4 +50,8 @@ public class UIScript : MonoBehaviour
         fuelText.text = string.Format("{0} / {1}", remainingFuel, maxFuel);
     }
 
+    public void ShowEndScreen()
+    {
+        endScreen.SetActive(true);
+    }
 }
