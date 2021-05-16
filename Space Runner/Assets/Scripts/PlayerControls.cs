@@ -6,6 +6,17 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] InputAction movement;
+
+    private void OnEnable()
+    {
+        movement.Enable();
+    }
+
+    private void OnDisable()
+    {
+        movement.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +26,11 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float horizontalThrow = movement.ReadValue<Vector2>().x;
+
+        float verticalThrow = movement.ReadValue<Vector2>().y;
+
+        Debug.Log(string.Format("Horizontal:{0} - Vertical:{1}",horizontalThrow ,verticalThrow));
+
     }
 }
