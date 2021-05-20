@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,24 +6,38 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
-    [SerializeField] InputAction movement;
-    [SerializeField] [Range(0, 30)] float MovementSpeed = 15f;
-    [SerializeField] float positionPitchFactor = -3.5f;
-    [SerializeField] float controlPitchFactor = -10f;
-    [SerializeField] float positionYawFactor = 4.5f;
-    [SerializeField] float controlRollFactor = -12.5f;
+
+    [Header("General Setup Settings")]
+    [Tooltip("Ship movement speed between 0 and 60")] [SerializeField] [Range(0, 60)] float MovementSpeed = 15f;
     [SerializeField] float xRange = 10f;
     [SerializeField] float yRange = 6.5f;
+
+    [Header("Player input controls")]
+    [SerializeField] InputAction movement;
+    [SerializeField] InputAction fire;
+
+    [Header("Screen position tuning values")]
+    [SerializeField] float positionPitchFactor = -3.5f;
+    [SerializeField] float positionYawFactor = 4.5f;
+
+    [Header("Player input tuning values")]
+    [SerializeField] float controlPitchFactor = -10f;
+    [SerializeField] float controlRollFactor = -12.5f;
+
+    [Header("Player Lasers")]
+    [Tooltip("Add player lasers here")][SerializeField] GameObject[] lasers;
     float xThrow, yThrow;
 
     private void OnEnable()
     {
         movement.Enable();
+        fire.Enable();
     }
 
     private void OnDisable()
     {
         movement.Disable();
+        fire.Disable();
     }
 
     // Update is called once per frame
@@ -30,6 +45,23 @@ public class PlayerControls : MonoBehaviour
     {
         ProcessTranslation();
         ProcessRotation();
+        ProcessFiring();
+    }
+    
+    private void ProcessFiring()
+    {
+        //If pushing fire button shoot lasers 
+        SetLasersActive(fire.ReadValue<float>() > 0.5f);
+        
+    }
+
+    private void SetLasersActive(bool areActive)
+    {
+        foreach (GameObject laser in lasers)
+        {
+            ParticleSystem.EmissionModule emission = laser.GetComponent<ParticleSystem>().emission;
+            emission.enabled = areActive;
+        }
     }
 
     private void ProcessTranslation()
