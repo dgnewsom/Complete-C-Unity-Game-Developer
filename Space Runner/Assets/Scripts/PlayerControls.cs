@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +10,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float yRange = 6.5f;
 
     [Header("Player input controls")]
+    [SerializeField] [Tooltip("Delay before activating controls")] float controlDelayTimer = 2.5f;
     [SerializeField] InputAction movement;
     [SerializeField] InputAction fire;
 
@@ -24,9 +22,13 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float controlPitchFactor = -10f;
     [SerializeField] float controlRollFactor = -12.5f;
 
-    [Header("Player Lasers")]
-    [Tooltip("Add player lasers here")][SerializeField] GameObject[] lasers;
+    [Header("Particle Systems")]
+    [Tooltip("Add player lasers here")] [SerializeField] GameObject[] lasers;
+    [Tooltip("Add Death particles here")] [SerializeField] ParticleSystem deathParticles;
+
     float xThrow, yThrow;
+    bool controlsActive = false;
+    bool isDead = false;
 
     private void OnEnable()
     {
@@ -43,16 +45,30 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessTranslation();
-        ProcessRotation();
-        ProcessFiring();
+        if (controlsActive && !isDead)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+            ProcessFiring();
+        }
+        else
+        {
+            if (controlDelayTimer > 0)
+            {
+                controlDelayTimer -= Time.deltaTime;
+            }
+            else
+            {
+                controlsActive = true;
+            }
+        }
     }
-    
+
     private void ProcessFiring()
     {
         //If pushing fire button shoot lasers 
         SetLasersActive(fire.ReadValue<float>() > 0.5f);
-        
+
     }
 
     private void SetLasersActive(bool areActive)
@@ -92,5 +108,13 @@ public class PlayerControls : MonoBehaviour
 
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    public void KillPlayer()
+    {
+        isDead = true;
+        SetLasersActive(false);
+        GameObject.Find("StarSparrow").SetActive(false);
+        deathParticles.Play();
     }
 }
