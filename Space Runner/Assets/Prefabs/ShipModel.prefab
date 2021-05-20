@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 561638376893221058}
   - component: {fileID: 3364946791368148709}
   - component: {fileID: 7519631424831180960}
-  - component: {fileID: 5029374677842060231}
-  - component: {fileID: 3091889676984834633}
   - component: {fileID: 2166786817433879723}
   m_Layer: 0
   m_Name: ShipModel
@@ -155,32 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed811988fc8e645488a5910e4b764a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &5029374677842060231
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561638376893221085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.98, y: 1, z: 8.51}
-  m_Center: {x: 0, y: 0, z: -2.27}
---- !u!65 &3091889676984834633
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561638376893221085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.3475337, y: 1, z: 13.158346}
-  m_Center: {x: 0.015442207, y: 0, z: 0.09419633}
 --- !u!54 &2166786817433879723
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -420,7 +392,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
       propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: ColorModule.gradient.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.3483725
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.28504565
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: ColorModule.gradient.minGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: ColorModule.gradient.minGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: VelocityModule.speedModifier.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: VelocityModule.speedModifier.maxCurve.m_Curve.Array.data[1].value
+      value: -0.02702713
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.maxCurve.m_Curve.Array.data[1].value
+      value: 0.59459686
       objectReference: {fileID: 0}
     - target: {fileID: 3950813629660582158, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
       propertyPath: m_Name
