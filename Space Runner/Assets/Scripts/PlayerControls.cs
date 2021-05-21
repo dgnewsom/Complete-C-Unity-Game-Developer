@@ -124,6 +124,8 @@ public class PlayerControls : MonoBehaviour
         isDead = true;
         SetLasersActive(false);
         GameObject.Find("StarSparrow").SetActive(false);
+        deathParticles.GetComponent<AudioSource>().Play();
         deathParticles.Play();
+
     }
 }

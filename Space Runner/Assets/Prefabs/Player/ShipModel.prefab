@@ -52,7 +52,7 @@ MonoBehaviour:
   MovementSpeed: 40
   xRange: 16
   yRange: 10
-  controlDelayTimer: 2.5
+  controlDelayTimer: 2
   movement:
     m_Name: Movement
     m_Type: 0
@@ -133,8 +133,8 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Fire
       m_Flags: 0
-  positionPitchFactor: -3.5
-  positionYawFactor: 3
+  positionPitchFactor: -1.5
+  positionYawFactor: 1.5
   controlPitchFactor: 10
   controlRollFactor: -35
   lasers:
@@ -169,32 +169,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6094153406701307056
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562136420575987620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.98, y: 1, z: 8.51}
-  m_Center: {x: 0, y: 0, z: -2.27}
---- !u!65 &7289794848839719886
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562136420575987620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.3475337, y: 1, z: 13.158346}
-  m_Center: {x: 0.015442207, y: 0, z: 0.09419633}
 --- !u!1001 &561638376191620448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,15 +224,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 354537326, guid: 668f40e714e20ed499014cc822acdb9f, type: 3}
-    - {fileID: 354537325, guid: 668f40e714e20ed499014cc822acdb9f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668f40e714e20ed499014cc822acdb9f, type: 3}
---- !u!1 &562136420575987620 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1771554801005252, guid: 668f40e714e20ed499014cc822acdb9f, type: 3}
-  m_PrefabInstance: {fileID: 561638376191620448}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &565863489723658448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4801533614458288, guid: 668f40e714e20ed499014cc822acdb9f, type: 3}
@@ -382,65 +349,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: VelocityModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: ColorModule.gradient.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.3483725
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.g
-      value: 0.28504565
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: ColorModule.gradient.minGradient.key0.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: ColorModule.gradient.minGradient.key0.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: VelocityModule.speedModifier.minMaxState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.minMaxState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: VelocityModule.speedModifier.maxCurve.m_Curve.Array.data[1].value
-      value: -0.02702713
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523449178448198655, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: EmissionModule.rateOverDistance.maxCurve.m_Curve.Array.data[1].value
-      value: 0.59459686
-      objectReference: {fileID: 0}
     - target: {fileID: 3950813629660582158, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
       propertyPath: m_Name
       value: DeathParticles
-      objectReference: {fileID: 0}
-    - target: {fileID: 3950813629660582158, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e798a3c935e540b46bc9fc9d8a094003, type: 3}

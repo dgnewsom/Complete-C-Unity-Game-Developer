@@ -208,20 +208,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShipModel
       objectReference: {fileID: 0}
-    - target: {fileID: 3364946791368148709, guid: 91b0b2f464e707947913f8e8e5088fb2, type: 3}
-      propertyPath: controlDelayTimer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364946791368148709, guid: 91b0b2f464e707947913f8e8e5088fb2, type: 3}
-      propertyPath: positionYawFactor
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364946791368148709, guid: 91b0b2f464e707947913f8e8e5088fb2, type: 3}
-      propertyPath: positionPitchFactor
-      value: -1.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4616921037246552815, guid: 91b0b2f464e707947913f8e8e5088fb2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b0b2f464e707947913f8e8e5088fb2, type: 3}
 --- !u!4 &2988673161189046661 stripped
 Transform:
