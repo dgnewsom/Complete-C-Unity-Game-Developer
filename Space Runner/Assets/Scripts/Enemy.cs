@@ -13,17 +13,19 @@ public class Enemy : MonoBehaviour
     ScoreBoard scoreboard;
     bool isDead = false;
     GameObject player;
+    Transform spawnParent;
 
     private void Start()
     {
         scoreboard = FindObjectOfType<ScoreBoard>();
         currentHealth = startHealth;
         player = FindObjectOfType<CollisionHandler>().gameObject;
+        spawnParent = GameObject.Find("SpawnedItems").transform;
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        GameObject vfx = Instantiate(hitParticles, this.transform.position, Quaternion.identity, GameObject.Find("SpawnedItems").transform);
+        GameObject vfx = Instantiate(hitParticles, this.transform.position, Quaternion.identity, spawnParent);
         vfx.transform.LookAt(player.transform);
         if (!isDead)
         {
@@ -45,7 +47,7 @@ public class Enemy : MonoBehaviour
     {
         isDead = true;
         IncreaseScore(deathScoreValue);
-        Instantiate(enemyDeathParticles, this.transform.position, Quaternion.identity, GameObject.Find("SpawnedItems").transform);
+        Instantiate(enemyDeathParticles, this.transform.position, Quaternion.identity, spawnParent);
         Destroy(gameObject);
     }
 }

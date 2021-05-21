@@ -73,6 +73,15 @@ public class PlayerControls : MonoBehaviour
 
     private void SetLasersActive(bool areActive)
     {
+        if (areActive)
+        {
+            Debug.Log("Firing");
+        }
+        else
+        {
+            Debug.Log("Stop Firing");
+        }
+
         foreach (GameObject laser in lasers)
         {
             ParticleSystem.EmissionModule emission = laser.GetComponent<ParticleSystem>().emission;
