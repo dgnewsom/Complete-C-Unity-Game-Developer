@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject enemyDeathParticles;
     [SerializeField] GameObject hitParticles;
-    [SerializeField] int hitScoreValue = 5;
+    [SerializeField] int hitScoreValue = 500;
+    [SerializeField] int deathScoreValue = 5000;
     [SerializeField] int startHealth = 30;
     int currentHealth;
     ScoreBoard scoreboard;
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
         vfx.transform.LookAt(player.transform);
         if (!isDead)
         {
-            IncreaseScore();
+            IncreaseScore(hitScoreValue);
             currentHealth --;
             if(currentHealth <= 0)
             {
@@ -35,14 +36,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void IncreaseScore()
+    private void IncreaseScore(int scoreToAdd)
     {
-        scoreboard.IncreaseScore(hitScoreValue);
+        scoreboard.IncreaseScore(scoreToAdd);
     }
 
     private void KillEnemy()
     {
         isDead = true;
+        IncreaseScore(deathScoreValue);
         Instantiate(enemyDeathParticles, this.transform.position, Quaternion.identity, GameObject.Find("SpawnedItems").transform);
         Destroy(gameObject);
     }
