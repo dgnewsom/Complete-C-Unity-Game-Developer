@@ -282,8 +282,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570366477}
-  m_Layer: 0
-  m_Name: GameObject
+  - component: {fileID: 570366478}
+  m_Layer: 6
+  m_Name: PostProcessing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,6 +304,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &570366478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570366476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 5c69f26ea249b5541bfbff808e663b1d, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &611281139
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,22 +555,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1259272098, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
-      propertyPath: MovementSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259272098, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
-      propertyPath: positionYawFactor
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259272098, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
-      propertyPath: controlPitchFactor
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259272098, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
-      propertyPath: positionPitchFactor
-      value: -2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2988673162062448604, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -600,10 +602,6 @@ PrefabInstance:
     - target: {fileID: 2988673162062448605, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
       propertyPath: m_Name
       value: PlayerRig
-      objectReference: {fileID: 0}
-    - target: {fileID: 8012347323621054197, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88fccf505c32ad341ace288de8ef3813, type: 3}
