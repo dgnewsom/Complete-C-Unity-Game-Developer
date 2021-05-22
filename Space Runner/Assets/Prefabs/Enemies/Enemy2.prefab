@@ -49,7 +49,7 @@ MonoBehaviour:
   hitParticles: {fileID: 1498779736153182293, guid: de6447d80264cc94785f2ee854188770, type: 3}
   hitScoreValue: 40000
   deathScoreValue: 400000
-  startHealth: 10
+  startHealth: 40
 --- !u!54 &2784293309707956840
 Rigidbody:
   m_ObjectHideFlags: 0
