@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[ExecuteAlways]
+[ExecuteAlways][RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
 {
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
+    Waypoint waypoint;
+    [SerializeField] Color selectableColour = Color.white, unselectableColour = Color.gray;
 
     void Awake()
     {
         label = GetComponent<TextMeshPro>();
+        label.enabled = false;
         DisplayCoordinates();
+        waypoint = GetComponentInParent<Waypoint>();
+        SetLabelColour();
     }
 
     void Update()
@@ -20,6 +25,18 @@ public class CoordinateLabeler : MonoBehaviour
         if (!Application.isPlaying)
         {
             DisplayCoordinates();
+            UpdateObjectName();
+            label.enabled = true;
+        }
+        SetLabelColour();
+        ToggleCoordinates();
+    }
+
+    void ToggleCoordinates()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            label.enabled = !label.IsActive();
         }
     }
 
@@ -29,11 +46,22 @@ public class CoordinateLabeler : MonoBehaviour
         coordinates.y = Mathf.RoundToInt(transform.position.z / UnityEditor.EditorSnapSettings.move.z);
 
         label.text = $"({coordinates.x},{coordinates.y})";
-        UpdateObjectName();
     }
 
     void UpdateObjectName()
     {
         transform.parent.name = coordinates.ToString();
+    }
+
+    void SetLabelColour()
+    {
+        if (waypoint.IsPlaceable)
+        {
+            label.color = selectableColour;
+        }
+        else
+        {
+            label.color = unselectableColour;
+        }
     }
 }

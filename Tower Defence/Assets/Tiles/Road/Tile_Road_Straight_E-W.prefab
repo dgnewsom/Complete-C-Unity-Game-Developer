@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2841154376408536702, guid: 08110c60ab8b10847b1fe2da42213e0c, type: 3}
       propertyPath: m_Name
-      value: Tile_RoadStraight90
+      value: Tile_Road_Straight_E-W
       objectReference: {fileID: 0}
     - target: {fileID: 4932582395341716669, guid: 08110c60ab8b10847b1fe2da42213e0c, type: 3}
       propertyPath: m_RootOrder
