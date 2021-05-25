@@ -7,16 +7,19 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     
-    [SerializeField] [Tooltip("List of tiles to follow")]List<Waypoint> path = new List<Waypoint>();
-    [SerializeField] bool fixedPath = true;
     float speed = 1f;
+    List<Node> path = new List<Node>();
     Enemy enemy;
+    GridManager gridManager;
+    PathFinder pathFinder;
     Scorer scorer;
 
 
-    private void Start()
+    private void Awake()
     {
         enemy = GetComponent<Enemy>();
+        gridManager = FindObjectOfType<GridManager>();
+        pathFinder = FindObjectOfType<PathFinder>();
         scorer = FindObjectOfType<Scorer>();
     }
 
@@ -31,7 +34,7 @@ public class EnemyMover : MonoBehaviour
     {
         if (path[0] != null)
         {
-            transform.position = path[0].transform.position;
+            transform.position = gridManager.GetPositionFronCoordinates(pathFinder.StartCoordinates);
         }
     }
 
@@ -43,28 +46,16 @@ public class EnemyMover : MonoBehaviour
     private void FindPath()
     {
         path.Clear();
-        if (fixedPath)
-        {
-            Transform parent = GameObject.FindGameObjectWithTag("Path").transform;
-        
-            foreach(Transform child in parent.transform)
-            {
-                Waypoint waypoint = child.GetComponent<Waypoint>();
-                if(waypoint != null)
-                {
-                     path.Add(waypoint);
-                }
-            }
-        }
+        path = pathFinder.GetNewPath();
     }
     IEnumerator FollowPath()
     {
         if (path.Count > 0)
         {
-            foreach (Waypoint waypoint in path)
+            for (int i = 0; i < path.Count; i++)
             {
                 Vector3 startPosition = transform.position;
-                Vector3 endPosition = waypoint.transform.position;
+                Vector3 endPosition = gridManager.GetPositionFronCoordinates(path[i].coordinates);
                 float travelPercentage = 0f;
 
                 transform.LookAt(endPosition);

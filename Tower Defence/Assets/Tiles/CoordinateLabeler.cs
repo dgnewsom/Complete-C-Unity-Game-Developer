@@ -6,17 +6,18 @@ using TMPro;
 [ExecuteAlways][RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
 {
+    [SerializeField] Color defaultColour = Color.white, blockedColour = Color.gray, exploredColour = Color.yellow, pathColour = new Color(1f,0f,0.5f);
+
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
-    Waypoint waypoint;
-    [SerializeField] Color selectableColour = Color.white, unselectableColour = Color.gray;
+    GridManager gridManager;
 
     void Awake()
     {
+        gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
         label.enabled = false;
         DisplayCoordinates();
-        waypoint = GetComponentInParent<Waypoint>();
         SetLabelColour();
     }
 
@@ -42,8 +43,8 @@ public class CoordinateLabeler : MonoBehaviour
 
     void DisplayCoordinates()
     {
-        coordinates.x = Mathf.RoundToInt(transform.position.x / UnityEditor.EditorSnapSettings.move.x);
-        coordinates.y = Mathf.RoundToInt(transform.position.z / UnityEditor.EditorSnapSettings.move.z);
+        coordinates.x = Mathf.RoundToInt(transform.position.x / gridManager.UnityGridSize);
+        coordinates.y = Mathf.RoundToInt(transform.position.z / gridManager.UnityGridSize);
 
         label.text = $"({coordinates.x},{coordinates.y})";
     }
@@ -55,13 +56,26 @@ public class CoordinateLabeler : MonoBehaviour
 
     void SetLabelColour()
     {
-        if (waypoint.IsPlaceable)
+        if(gridManager == null) { return; }
+
+        Node node = gridManager.GetNode(coordinates);
+        if (node == null) { return; }
+
+        if (!node.isWalkable)
         {
-            label.color = selectableColour;
+            label.color = blockedColour;
+        }
+        else if (node.isPath)
+        {
+            label.color = pathColour;
+        }
+        else if (node.isExplored)
+        {
+            label.color = exploredColour;
         }
         else
         {
-            label.color = unselectableColour;
+            label.color = defaultColour;
         }
     }
 }
