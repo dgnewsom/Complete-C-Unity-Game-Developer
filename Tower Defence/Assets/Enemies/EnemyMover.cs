@@ -30,6 +30,11 @@ public class EnemyMover : MonoBehaviour
         }
     }
 
+    internal void SetSpeed(float enemySpeed)
+    {
+        speed = enemySpeed;
+    }
+
     private void FindPath()
     {
         path.Clear();

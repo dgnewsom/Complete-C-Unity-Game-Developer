@@ -8,6 +8,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] [Range(0,50)]int poolSize = 5;
     [SerializeField] [Range(0.5f,30f)]float delayBetweenSpawns = 1f;
+    [SerializeField] [Range(0, 5f)] float enemiesSpeed = 1f;
 
     GameObject[] pool;
 
@@ -22,6 +23,7 @@ public class ObjectPool : MonoBehaviour
         for(int i = 0; i < pool.Length; i++)
         {
             pool[i] = Instantiate(enemyPrefab, transform);
+            pool[i].GetComponent<EnemyMover>().SetSpeed(enemiesSpeed);
             pool[i].SetActive(false);
         }
     }
