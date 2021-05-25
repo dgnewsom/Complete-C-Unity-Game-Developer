@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 5
-  difficultyRamp: 1
+  difficultyRamp: 5
 --- !u!65 &9216028476185346206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9d281bba2801843b00b19f390b7ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReward: 25
-  goldPenalty: 25
+  goldReward: 20
+  goldPenalty: 20
 --- !u!1 &6768425889417239266
 GameObject:
   m_ObjectHideFlags: 0

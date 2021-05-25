@@ -10,10 +10,12 @@ public class EnemyHealth : MonoBehaviour
 
     int currentHP = 0;
     Enemy enemy;
+    Scorer scorer;
 
     private void Start()
     {
         enemy = GetComponent<Enemy>();
+        scorer = FindObjectOfType<Scorer>();
     }
 
     // Start is called before the first frame update
@@ -27,9 +29,18 @@ public class EnemyHealth : MonoBehaviour
         currentHP--;
         if(currentHP <= 1)
         {
-            enemy.RewardGold();
-            gameObject.SetActive(false);
-            maxHP += difficultyRamp;
+            KillEnemy();
         }
+    }
+
+    private void KillEnemy()
+    {
+        enemy.RewardGold();
+        if(scorer != null)
+        {
+            scorer.KillEnemy();
+        }
+        gameObject.SetActive(false);
+        maxHP += difficultyRamp;
     }
 }

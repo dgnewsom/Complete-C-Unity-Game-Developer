@@ -9,10 +9,12 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] [Range(0,5f)] float speed = 1f;
     [SerializeField] [Tooltip("List of tiles to follow")]List<Waypoint> path = new List<Waypoint>();
     Enemy enemy;
+    Scorer scorer;
 
     private void Start()
     {
         enemy = GetComponent<Enemy>();
+        scorer = FindObjectOfType<Scorer>();
     }
 
     void OnEnable()
@@ -76,6 +78,10 @@ public class EnemyMover : MonoBehaviour
     private void ReachEndOfPath()
     {
         enemy.StealGold();
+        if(scorer != null)
+        {
+            scorer.EnemyReachedGoal();
+        }
         gameObject.SetActive(false);
     }
 }
