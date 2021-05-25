@@ -8,9 +8,11 @@ public class EnemyMover : MonoBehaviour
 {
     
     [SerializeField] [Tooltip("List of tiles to follow")]List<Waypoint> path = new List<Waypoint>();
+    [SerializeField] bool fixedPath = true;
     float speed = 1f;
     Enemy enemy;
     Scorer scorer;
+
 
     private void Start()
     {
@@ -41,15 +43,17 @@ public class EnemyMover : MonoBehaviour
     private void FindPath()
     {
         path.Clear();
-
-        Transform parent = GameObject.FindGameObjectWithTag("Path").transform;
-        
-        foreach(Transform child in parent.transform)
+        if (fixedPath)
         {
-            Waypoint waypoint = child.GetComponent<Waypoint>();
-            if(waypoint != null)
+            Transform parent = GameObject.FindGameObjectWithTag("Path").transform;
+        
+            foreach(Transform child in parent.transform)
             {
-                 path.Add(waypoint);
+                Waypoint waypoint = child.GetComponent<Waypoint>();
+                if(waypoint != null)
+                {
+                     path.Add(waypoint);
+                }
             }
         }
     }
