@@ -6,8 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] [Range(0,5f)] float speed = 1f;
+    
     [SerializeField] [Tooltip("List of tiles to follow")]List<Waypoint> path = new List<Waypoint>();
+    float speed = 1f;
     Enemy enemy;
     Scorer scorer;
 

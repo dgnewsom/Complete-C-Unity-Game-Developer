@@ -8,13 +8,17 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] [Range(0,50)]int poolSize = 5;
     [SerializeField] [Range(0.5f,30f)]float delayBetweenSpawns = 1f;
-    [SerializeField] [Range(0, 5f)] float enemiesSpeed = 1f;
+    [SerializeField] [Range(0, 5f)] float poolSpeed = 1f;
+    [SerializeField] [Range(0, 1f)] float speedUpAmount = 0.5f;
+    [SerializeField] [Range(0, 5f)] float maxSpeed = 5f;
 
+    SpeedUpPanel speedUpPanel;
     GameObject[] pool;
 
     private void Awake()
     {
         PopulatePool();
+        speedUpPanel = FindObjectOfType<SpeedUpPanel>();
     }
 
     private void PopulatePool()
@@ -23,7 +27,7 @@ public class ObjectPool : MonoBehaviour
         for(int i = 0; i < pool.Length; i++)
         {
             pool[i] = Instantiate(enemyPrefab, transform);
-            pool[i].GetComponent<EnemyMover>().SetSpeed(enemiesSpeed);
+            pool[i].GetComponent<EnemyMover>().SetSpeed(poolSpeed);
             pool[i].SetActive(false);
         }
     }
@@ -50,8 +54,24 @@ public class ObjectPool : MonoBehaviour
             if (!enemy.activeInHierarchy)
             {
                 enemy.SetActive(true);
+                enemy.GetComponent<EnemyMover>().SetSpeed(poolSpeed);
                 break;
             }
+        }
+    }
+
+    internal void SpeedUpEnemies()
+    {
+        if (maxSpeed.Equals(poolSpeed))
+        {
+            return;
+        }
+        poolSpeed += speedUpAmount;
+        if(poolSpeed > maxSpeed) { poolSpeed = maxSpeed;}
+        speedUpPanel.ShowPanel();
+        for(int i = 0; i < pool.Length; i++)
+        {
+            pool[i].GetComponent<EnemyMover>().SetSpeed(poolSpeed);
         }
     }
 }

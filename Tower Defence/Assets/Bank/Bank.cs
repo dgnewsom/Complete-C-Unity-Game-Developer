@@ -23,7 +23,7 @@ public class Bank : MonoBehaviour
         currentBalance -= Mathf.Abs(amountToWithdraw);
         if(currentBalance < 0)
         {
-            Invoke(nameof(ReloadScene), 2f);
+            FindObjectOfType<GameOverScript>().DisplayGameOverScreen(true);
         }
         goldDisplay.UpdateDisplay(currentBalance);
     }
@@ -34,9 +34,5 @@ public class Bank : MonoBehaviour
         goldDisplay.UpdateDisplay(currentBalance);
     }
 
-    void ReloadScene()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
-    }
+    
 }
