@@ -17,16 +17,16 @@ public class HealthScript : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        Debug.Log($"{damageAmount} damage taken!");
+        Debug.Log($"{name} - {damageAmount} damage taken!");
         if(currentHealth <= 0f)
         {
             DeathBehaviour();
         }
     }
 
-    private void DeathBehaviour()
+    internal virtual void DeathBehaviour()
     {
         Debug.Log($"{name} is dead!");
-        Destroy(gameObject,1f);
+        
     }
 }

@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 5573758812219768841}
   - component: {fileID: 5573758812228018377}
   - component: {fileID: 5573758812234421901}
+  - component: {fileID: 616216382}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -332,6 +333,19 @@ MonoBehaviour:
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
+--- !u!114 &616216382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573758812223169391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8bd626938f90c408f64bf37676ca06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 10
 --- !u!1001 &7000346386467202876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,6 +357,14 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 5573758812224807241}
+    - target: {fileID: 816436243, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 5839424349313252525, guid: 9b94c02051bf0c64da4496c4e699345d, type: 3}
+    - target: {fileID: 1502002522625452126, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.075
+      objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
       propertyPath: m_RootOrder
       value: 0
