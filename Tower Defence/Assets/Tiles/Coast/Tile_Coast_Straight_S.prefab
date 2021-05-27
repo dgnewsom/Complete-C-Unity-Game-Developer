@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile_Coast_Straight_S
       objectReference: {fileID: 0}
+    - target: {fileID: 7601313157913989515, guid: fc02827b7422de144b213b682af2e831, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9131997004248812406, guid: fc02827b7422de144b213b682af2e831, type: 3}
       propertyPath: m_Mesh
       value: 

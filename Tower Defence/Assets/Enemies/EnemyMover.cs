@@ -25,17 +25,14 @@ public class EnemyMover : MonoBehaviour
 
     void OnEnable()
     {
-        FindPath();
         ReturnToStart();
-        StartCoroutine(FollowPath());
+        RecalculatePath(true);
     }
 
     void ReturnToStart()
     {
-        if (path[0] != null)
-        {
+        
             transform.position = gridManager.GetPositionFronCoordinates(pathFinder.StartCoordinates);
-        }
     }
 
     internal void SetSpeed(float enemySpeed)
@@ -43,16 +40,29 @@ public class EnemyMover : MonoBehaviour
         speed = enemySpeed;
     }
 
-    private void FindPath()
+    private void RecalculatePath(bool resetPath)
     {
+        Vector2Int coordinates = new Vector2Int();
+
+        if (resetPath)
+        {
+            coordinates = pathFinder.StartCoordinates;
+        }
+        else
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+        }
+        StopAllCoroutines();
         path.Clear();
-        path = pathFinder.GetNewPath();
+        path = pathFinder.GetNewPath(coordinates);
+        StartCoroutine(FollowPath());
+
     }
     IEnumerator FollowPath()
     {
         if (path.Count > 0)
         {
-            for (int i = 0; i < path.Count; i++)
+            for (int i = 1; i < path.Count; i++)
             {
                 Vector3 startPosition = transform.position;
                 Vector3 endPosition = gridManager.GetPositionFronCoordinates(path[i].coordinates);

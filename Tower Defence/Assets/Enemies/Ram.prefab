@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6811374470091534285}
   - component: {fileID: 9216028476185346206}
   - component: {fileID: 10877336159807092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ram
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb654b32cc1e6b246bca912566bbb337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: []
 --- !u!114 &6811374470091534285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9d281bba2801843b00b19f390b7ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldReward: 20
-  goldPenalty: 20
+  goldReward: 50
+  goldPenalty: 5
 --- !u!1 &6768425889417239266
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +99,7 @@ GameObject:
   - component: {fileID: 2546899948127619545}
   - component: {fileID: 832962926845997203}
   - component: {fileID: 4227469924074427399}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RamMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

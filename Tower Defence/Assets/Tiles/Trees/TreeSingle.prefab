@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_Large
       objectReference: {fileID: 0}
+    - target: {fileID: 792184948409546425, guid: e087f990d0ffa4f4c9f7dcf9b9f96eae, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607403508854935136, guid: e087f990d0ffa4f4c9f7dcf9b9f96eae, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e087f990d0ffa4f4c9f7dcf9b9f96eae, type: 3}
 --- !u!1001 &8726485034800337774
@@ -130,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7601313157913989515, guid: fc02827b7422de144b213b682af2e831, type: 3}
       propertyPath: m_Name
-      value: (0, 0)
+      value: TreeSingle
       objectReference: {fileID: 0}
     - target: {fileID: 9203473773571370374, guid: fc02827b7422de144b213b682af2e831, type: 3}
       propertyPath: isPlaceable

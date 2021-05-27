@@ -1462,7 +1462,7 @@ RectTransform:
   - {fileID: 72255511}
   - {fileID: 1605693577}
   m_Father: {fileID: 1499253214532523838}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1712,7 +1712,7 @@ RectTransform:
   m_Children:
   - {fileID: 1499253214619800410}
   m_Father: {fileID: 1499253214532523838}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2199,51 +2199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd51c0f8a9618214a95133faae6c2ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1499253213946123680
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1499253213946123682}
-  - component: {fileID: 1499253213946123683}
-  m_Layer: 0
-  m_Name: Bank
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1499253213946123682
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499253213946123680}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -387.3297, y: -223.06804, z: 6.917267}
-  m_LocalScale: {x: 0.41666663, y: 0.41666663, z: 0.41666663}
-  m_Children: []
-  m_Father: {fileID: 1499253214532523838}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1499253213946123683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499253213946123680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2cf0d3146d152742a64ca1811415a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingBalance: 500
-  currentBalance: 0
 --- !u!1 &1499253214282902620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,6 +2358,7 @@ GameObject:
   - component: {fileID: 1499253214532523839}
   - component: {fileID: 1499253214532523836}
   - component: {fileID: 1499253214532523837}
+  - component: {fileID: 508447839}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -2422,11 +2378,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1499253212854989249}
-  - {fileID: 1499253213946123682}
   - {fileID: 1499253213031453523}
   - {fileID: 678569812997476770}
-  - {fileID: 655980948}
   - {fileID: 1688624695}
+  - {fileID: 655980948}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2496,6 +2451,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &508447839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499253214532523834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9e5a0dadbcb7441ab4f18596565bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesAllowedBeforeGameOver: 1
+  enemiesBeforeSpeedUp: 20
 --- !u!1 &1499253214619800411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2754,7 +2723,7 @@ RectTransform:
   m_Children:
   - {fileID: 6641236415949900770}
   m_Father: {fileID: 1499253214532523838}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

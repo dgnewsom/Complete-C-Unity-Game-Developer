@@ -11,7 +11,7 @@ public class Bank : MonoBehaviour
 
     public int CurrentBalance { get => currentBalance;}
 
-    void Awake()
+    void Start()
     {
         currentBalance = startingBalance;
         goldDisplay = FindObjectOfType<GoldDisplay>();
