@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 680046286766652522}
   - component: {fileID: 5964873969068902206}
   - component: {fileID: 3401556372526828371}
+  - component: {fileID: 1769644714}
   m_Layer: 0
   m_Name: Handgun
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1246604783437908150}
   m_LocalRotation: {x: -0.06501843, y: -0.12998629, z: -0.0085425265, w: 0.98934484}
   m_LocalPosition: {x: 0.06, y: -0.03, z: 0.12}
-  m_LocalScale: {x: 0.0074926903, y: 0.0074926903, z: 0.0074926903}
+  m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_Children:
   - {fileID: 4297949506969023836}
   - {fileID: 8066939789513123312}
@@ -116,11 +117,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPCamera: {fileID: 0}
-  range: 100
-  damageAmount: 1
+  range: 50
+  damageAmount: 10
   muzzleFlash: {fileID: 0}
   hitEffect: {fileID: 5839424349313252525, guid: 9b94c02051bf0c64da4496c4e699345d, type: 3}
   ammoSlot: {fileID: 0}
+  shootDelay: 0.2
+  isAutomatic: 0
+--- !u!114 &1769644714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246604783437908150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598456b3ac36dbd4e9ceccc51664a9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  playerController: {fileID: 0}
+  toggle: 0
+  zoomedInFOVAmount: 30
+  zoomedOutFOVAmount: 60
+  zoomedOutSensitivity: 2
+  zoomedInSensitivity: 0.5
 --- !u!1 &1257470578334818759
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,21 +393,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2816875857313299109}
     m_Modifications:
+    - target: {fileID: 3323632890594250536, guid: c1912623bfe15044091ee6a29100378e, type: 3}
+      propertyPath: m_Name
+      value: HandGunMuzzleFlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064149450253609847, guid: c1912623bfe15044091ee6a29100378e, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalPosition.x

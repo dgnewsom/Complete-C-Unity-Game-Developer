@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6261135178960604522}
   - component: {fileID: 960245829719373374}
   - component: {fileID: 8115704526786532718}
+  - component: {fileID: 1317854224}
   m_Layer: 0
   m_Name: AK-47
   m_TagString: Untagged
@@ -115,11 +116,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPCamera: {fileID: 0}
-  range: 100
-  damageAmount: 1
+  range: 50
+  damageAmount: 20
   muzzleFlash: {fileID: 0}
   hitEffect: {fileID: 5839424349313252525, guid: 9b94c02051bf0c64da4496c4e699345d, type: 3}
   ammoSlot: {fileID: 0}
+  shootDelay: 0.1
+  isAutomatic: 1
+--- !u!114 &1317854224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5681523240635480502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598456b3ac36dbd4e9ceccc51664a9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  playerController: {fileID: 0}
+  toggle: 0
+  zoomedInFOVAmount: 30
+  zoomedOutFOVAmount: 60
+  zoomedOutSensitivity: 2
+  zoomedInSensitivity: 0.5
 --- !u!1 &7525370095052049040
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,11 +313,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3323632890594250536, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_Name
-      value: Muzzle Flash (1)
+      value: AKMuzzleFlash
       objectReference: {fileID: 0}
     - target: {fileID: 5064149450253609847, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.075
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_RootOrder
@@ -315,15 +337,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.5
+      value: 14.62
       objectReference: {fileID: 0}
     - target: {fileID: 5229524997153608336, guid: c1912623bfe15044091ee6a29100378e, type: 3}
       propertyPath: m_LocalRotation.w
