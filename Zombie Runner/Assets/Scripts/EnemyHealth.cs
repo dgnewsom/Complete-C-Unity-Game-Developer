@@ -10,4 +10,9 @@ public class EnemyHealth : HealthScript
         Destroy(gameObject, 1f);
     }
 
+    override public void TakeDamage(float damage)
+    {
+        BroadcastMessage("OnDamageTaken");
+        base.TakeDamage(damage);
+    }
 }

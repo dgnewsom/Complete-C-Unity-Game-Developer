@@ -8,25 +8,29 @@ public class HealthScript : MonoBehaviour
     [SerializeField] float startingHealth = 10f;
 
     float currentHealth;
+    bool isDead;
 
-    void Start()
+    void Awake()
     {
         currentHealth = startingHealth;
     }
 
-    public void TakeDamage(float damageAmount)
+    public virtual void TakeDamage(float damageAmount)
     {
-        currentHealth -= damageAmount;
-        Debug.Log($"{name} - {damageAmount} damage taken!");
-        if(currentHealth <= 0f)
+        if (!isDead)
         {
-            DeathBehaviour();
+            currentHealth -= damageAmount;
+            Debug.Log($"{name} - {damageAmount} damage taken!");
+            if(currentHealth <= 0f)
+            {
+                DeathBehaviour();
+            }
         }
     }
 
     internal virtual void DeathBehaviour()
     {
         Debug.Log($"{name} is dead!");
-        
+        isDead = true;
     }
 }
