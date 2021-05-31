@@ -22,6 +22,10 @@ public class WeaponZoom : MonoBehaviour
         SetCameraZoom();
     }
 
+    private void OnDisable()
+    {
+        ZoomOut();
+    }
 
     // Update is called once per frame
     void Update()
@@ -53,15 +57,26 @@ public class WeaponZoom : MonoBehaviour
     {
         if (isZoomed)
         {
-            playerCamera.fieldOfView = zoomedInFOVAmount;
-            SetMouseSensitivity(zoomedInSensitivity);
+            ZoomIn();
         }
         else
         {
-            playerCamera.fieldOfView = zoomedOutFOVAmount;
-            SetMouseSensitivity(zoomedOutSensitivity);
+            ZoomOut(); 
         }
     }
+
+    private void ZoomOut()
+    {
+        playerCamera.fieldOfView = zoomedOutFOVAmount;
+        SetMouseSensitivity(zoomedOutSensitivity);
+    }
+
+    private void ZoomIn()
+    {
+        playerCamera.fieldOfView = zoomedInFOVAmount;
+        SetMouseSensitivity(zoomedInSensitivity);
+    }
+
     private void SetMouseSensitivity(float setValue)
     {
         playerController.mouseLook.XSensitivity = setValue;

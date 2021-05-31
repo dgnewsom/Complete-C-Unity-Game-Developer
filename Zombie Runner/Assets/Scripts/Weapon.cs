@@ -5,20 +5,26 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] Camera FPCamera;
     [SerializeField] float range = 100f;
     [SerializeField] float damageAmount = 1f;
-    [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] GameObject hitEffect;
-    [SerializeField] Ammo ammoSlot;
     [SerializeField] float shootDelay = 0.5f;
     [SerializeField] bool isAutomatic = false; 
+    [SerializeField] Ammo ammoSlot;
+    [SerializeField] AmmoType ammoType;
+    [SerializeField] Camera FPCamera;
+    [SerializeField] GameObject hitEffect;
 
+    ParticleSystem muzzleFlash;
     bool canFire = true;
 
     private void Start()
     {
         muzzleFlash = GetComponentInChildren<ParticleSystem>();
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(ShootDelay(0.5f));
     }
 
     void Update()
@@ -41,20 +47,20 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        if (ammoSlot.GetCurrentAmmo() > 0)
+        if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
         {
             GetComponent<Animation>().Play();
             PlayMuzzleFlash();
             ProcessRaycast();
-            ammoSlot.ReduceCurrentAmmo();
+            ammoSlot.ReduceCurrentAmmo(ammoType);
             canFire = false;
-            StartCoroutine(ShootDelay());
+            StartCoroutine(ShootDelay(shootDelay));
         }
     }
 
-    IEnumerator ShootDelay()
+    IEnumerator ShootDelay(float delay)
     {
-        yield return new WaitForSeconds(shootDelay);
+        yield return new WaitForSeconds(delay);
         canFire = true;
     }
 
