@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ammo2
+  m_Name: Pickups
   m_Shader: {fileID: -6465566751694194690, guid: 65cff47f08340564daa7d2fa268f747c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

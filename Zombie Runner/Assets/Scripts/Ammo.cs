@@ -48,4 +48,12 @@ public class Ammo : MonoBehaviour
         return null;
     }
 
+    public void AddAmmo(AmmoType ammoType, int quantity)
+    {
+        AmmoSlot slot = GetAmmoSlot(ammoType);
+        if (slot != null)
+        {
+            slot.ammoAmount += quantity;
+        }
+    }
 }
